@@ -1,2 +1,3 @@
-# ed2025_tp4_grupo1
-
+Valentin Angulo
+Inti Colque
+Santino Tito
