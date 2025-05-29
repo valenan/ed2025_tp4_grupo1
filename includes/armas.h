@@ -9,13 +9,13 @@ using namespace std;
 class arma {
 private:
     string nombre;
-    int daño;
+    int dano;
     string descripcion;
     bool contundente;
     bool veneno;
 public:
 
-    arma(string nombre, int daño, string descripcion,bool contundente,bool veneno);
+    arma(string nombre, int dano, string descripcion,bool contundente,bool veneno);
     void mostrar_arma();
 
 };
@@ -24,7 +24,7 @@ private:
     int especial;
     int cooldown;               
 public:
-baston(int especial, int cooldown,string nombre, int daño, string descripcion,bool contundente,bool veneno);
+baston(int especial, int cooldown,string nombre, int dano, string descripcion,bool contundente,bool veneno);
 void mostrar_arma();
 };
 

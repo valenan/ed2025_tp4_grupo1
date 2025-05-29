@@ -1,11 +1,11 @@
-#include "armas.h"
+#include <armas.h>
 
 
 using namespace std;
 
-    arma::arma(string nombre, int daño, string descripcion,bool contundente,bool veneno){
+    arma::arma(string nombre, int dano, string descripcion,bool contundente,bool veneno){
         this->nombre=nombre;
-        this->daño=daño;
+        this->dano=dano;
         this->descripcion=descripcion;
         this->contundente=contundente;
         this->veneno=veneno;
@@ -18,7 +18,7 @@ using namespace std;
         cout<<"Contundente: Deja inutilizable al personaje del enemigo 1 turno"<<endl;
     };
 
-baston::baston(int especial, int cooldown,string nombre, int daño, string descripcion,bool contundente,bool veneno):arma(nombre,daño,descripcion,contundente,veneno){
+baston::baston(int especial, int cooldown,string nombre, int dano, string descripcion,bool contundente,bool veneno):arma(nombre,dano,descripcion,contundente,veneno){
     this->especial=especial;
     this->cooldown=cooldown;
 };
