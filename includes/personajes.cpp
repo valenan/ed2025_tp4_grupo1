@@ -16,7 +16,7 @@ personaje::personaje(int vida,string nombrepj,bool activo,int veneno,bool vivo,s
 void personaje::mostrar_pj(){
 cout<<"Nombre: "<<nombrepj<<endl<<"Descripcion: "<<descripcion<<endl;
 };
-void personaje::atacar(arma dano,bool veneno,bool contundente){
+int personaje::atacar(arma dano,bool veneno,bool contundente){
 
 
 };
