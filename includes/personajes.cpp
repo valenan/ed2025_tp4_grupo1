@@ -5,8 +5,18 @@ using namespace std;
 
 
 
-personaje::personaje(int vida,string nombre,bool activo,int veneno,bool vivo){
+personaje::personaje(int vida,string nombrepj,bool activo,int veneno,bool vivo,string descripcion){
     this->vida=vida;
-    this->nombre=nombre;
+    this->nombrepj=nombrepj;
+    this->activo=activo;
+    this->veneno=veneno;
+    this->vivo=vivo;
+    this->descripcion=descripcion;
 };
+void personaje::mostrar_pj(){
+cout<<"Nombre: "<<nombrepj<<endl<<"Descripcion: "<<descripcion<<endl;
+};
+void personaje::atacar(arma dano,bool veneno,bool contundente){
 
+
+};
