@@ -31,9 +31,9 @@ int main (){
         case 1:
         cout<<"Has elegido jugar 1v1"<<endl;
         cout<<"Jugador 1: ";
-        personaje pj1=elegir_pj(caballero,duende,ogro,hypnos,medico,necromago);
+        personaje& pj1=elegir_pj(caballero,duende,ogro,hypnos,medico,necromago);
         cout<<"Jugador 2: ";
-        personaje pj2=elegir_pj(caballero,duende,ogro,hypnos,medico,necromago);
+        personaje& pj2=elegir_pj(caballero,duende,ogro,hypnos,medico,necromago);
         jcj1(pj1,pj2);
         break;
 
@@ -94,6 +94,48 @@ personaje& elegir_pj(guerrero caballero, otros duende, otros ogro, mago hypnos, 
 };
 
 void jcj1(personaje& pj1, personaje& pj2){
-    int turno=0;
-    while(true);
+    int turno1=0,turno2=0,dano;
+    while(pj1.get_vivo()&&pj2.get_vivo()){
+turno1++;
+cout<<"Turno del jugador 1: "<<endl;
+if(pj1.get_activo()){
+    cout<<pj1.get_nombrepj()<<" es el jugador activo."<<endl;
+} else {
+    cout<<pj1.get_nombrepj()<<" no esta activo, turno perdido."<<endl;
+    turno1--;
+    continue; // Si el jugador no esta activo, se salta su turno
 }
+if (pj1.get_veneno()>0){
+            pj1.recibirveneno(true);
+            cout<<pj1.get_nombrepj()<<" ha recibido veneno, pierde 10 de vida."<<endl;
+        }
+        cout<<"Vida de "<<pj1.get_nombrepj()<<": "<<pj1.get_vida()<<endl;
+        cout<<"Vida de "<<pj2.get_nombrepj()<<": "<<pj2.get_vida()<<endl;
+        cout<<"Elige una accion: "<<endl;
+        cout<<"1: Atacar"<<endl;
+        cout<<"2: Usar habilidad especial"<<endl;
+        int accion1;
+        cin>>accion1;
+
+        if(accion1==1){
+            dano=pj1.atacar(pj2.get_arma());
+            pj2.recibirdano(dano);
+            if(pj1.get_arma().get_veneno()){
+                pj2.recibirveneno(true);
+            }
+            if(!pj2.get_vivo()){
+                cout<<pj2.get_nombrepj()<<" ha sido derrotado!"<<endl;
+                break;
+            }
+        } else if (accion1 == 2) {
+        if(pj1.get_arma().get_contundente()){
+            cout<<"El arma es contundente, el enemigo no podra atacar en su proximo turno."<<endl;
+            pj2.set_activo(false); // El enemigo no podra atacar en su proximo turno
+        } else {
+            cout << "Accion invalida, turno perdido." << endl;
+        }
+
+
+
+    };
+};

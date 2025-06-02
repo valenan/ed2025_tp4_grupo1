@@ -54,7 +54,6 @@ void personaje::set_activo(bool activo) { this->activo = activo; }
 void personaje::set_veneno(int veneno) { this->veneno = veneno; }
 void personaje::set_vivo(bool vivo) { this->vivo = vivo; }
 void personaje::set_descripcion(const string& descripcion) { this->descripcion = descripcion; }
-
 // Guerrero class
 guerrero::guerrero(int vida,string nombrepj, bool activo, int veneno, bool vivo,string descripcion,int escudo,arma& ARMA)
     : personaje(vida,nombrepj,activo,veneno,vivo,descripcion), ARMA(ARMA), escudo(escudo) {
@@ -69,6 +68,9 @@ void guerrero::recibirescudo(int recibido,int escudo){
     } else {
         recibirdano(recibido); //si no hay escudo, recibe el dano
     }
+};
+arma& guerrero::get_arma() {
+    return ARMA; // Retorna la arma del guerrero
 };
 // Mago class
 mago::mago(int vida,string nombrepj,bool activo,int veneno,bool vivo,string descripcion,baston BASTON,int proteccion,bool prot_si)
@@ -86,15 +88,26 @@ int mago::especial(baston& BASTON,personaje& pj1,personaje& pj2) {
         break;
     case 1:
         pj1.recibircuracion(20); // Curacion: cura a un aliado
-        cout << pj1.get_nombrepj() << " ha sido curado por " << BASTON.get_dano() << " puntos de vida." << endl;
+        cout << pj1.get_nombrepj() << " ha sido curado por " << 20 << " puntos de vida." << endl;
         break;
     case 2:
-        pj2.set_vivo(true); // Necromacia: revive un aliado
-        cout << pj2.get_nombrepj() << " ha sido revivido por " << BASTON.get_dano() << " puntos de vida." << endl;
+        pj2.set_vivo(true);
+        pj2.set_vida(999);// vida=999 para indicar que ha sido revivido, no puede ser atacado
+        cout << pj2.get_nombrepj() << " ha sido revivido por " << 1 << " turno" << endl;
         break;
     
     default:
         break;
     }
 };
+arma& mago::get_arma() {
+    return BASTON; // Retorna el baston del mago
+};
 // Otros class
+otros::otros(int vida,string nombrepj,bool activo,int veneno,bool vivo,string descripcion,arma& ARMA)
+    : personaje(vida,nombrepj,activo,veneno,vivo,descripcion), ARMA(ARMA) {
+        // Constructor de otros
+};
+arma& otros::get_arma() {
+    return ARMA; // Retorna la arma del personaje normal
+};

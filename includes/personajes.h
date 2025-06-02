@@ -23,6 +23,7 @@ class personaje{
     void recibirdano(int recibido);
     void recibirveneno(bool recibido);
     void recibircuracion(int recibido);
+    virtual arma& get_arma() = 0; // virtual para permitir que las subclases implementen su propia arma
 
     //getters
     int get_vida();
@@ -50,6 +51,7 @@ class guerrero: public personaje{
     public:
     guerrero(int vida,string nombrepj, bool activo, int veneno, bool vivo,string descripcion,int escudo,arma& ARMA);
     void recibirescudo(int recibido,int escudo);
+    arma& get_arma() override;
 };
 class mago: public personaje {
 private:
@@ -59,6 +61,7 @@ bool prot_si;
 public:
 mago(int vida,string nombrepj,bool activo,int veneno,bool vivo,string descripcion,baston BASTON,int proteccion,bool prot_si);
 int especial(baston& BASTON,personaje& pj1,personaje& pj2); 
+arma& get_arma() override;
 
 };
 class otros: public personaje{
@@ -67,8 +70,8 @@ class otros: public personaje{
     arma& ARMA;
     public:
 otros(int vida,string nombrepj,bool activo,int veneno,bool vivo,string descripcion,arma& ARMA);
+
+arma& get_arma() override;
 };
-
-
 
 #endif
