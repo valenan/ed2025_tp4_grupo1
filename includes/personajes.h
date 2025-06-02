@@ -30,7 +30,7 @@ class guerrero: public personaje{
     arma& ARMA;
     int escudo;//30 hp, si se rompe el guerrero no recibe daño
     public:
-    guerrero(int vida,string nombrepj, bool activo, int veneno, bool vivo,string descripcion,int escudo,arma& weapon);
+    guerrero(int vida,string nombrepj, bool activo, int veneno, bool vivo,string descripcion,int escudo,arma& ARMA);
     void recibirescudo(int recibido,int escudo);
 };
 class mago: public personaje {
