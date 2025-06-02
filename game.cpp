@@ -5,7 +5,9 @@
 using namespace std;
 void menu(int a);
 void jcj1();
-void elegir_pj(int cuantos);
+personaje& elegir_pj(guerrero caballero, otros duende, otros ogro, mago hypnos, mago medico, mago necromago);
+void jcj1(personaje& pj1,personaje& pj2);
+
 int main (){
     int a,turno=0;
     //definicion de armas
@@ -27,7 +29,12 @@ int main (){
     menu(a);
     switch (a){
         case 1:
-            jcj1();
+        cout<<"Has elegido jugar 1v1"<<endl;
+        cout<<"Jugador 1: ";
+        personaje pj1=elegir_pj(caballero,duende,ogro,hypnos,medico,necromago);
+        cout<<"Jugador 2: ";
+        personaje pj2=elegir_pj(caballero,duende,ogro,hypnos,medico,necromago);
+        jcj1(pj1,pj2);
         break;
 
     }
@@ -45,3 +52,48 @@ cout<<"5: Mostrar armas"<<endl;
 cout<<"0: Salir"<<endl;
 cin>>a;
 };
+personaje& elegir_pj(guerrero caballero, otros duende, otros ogro, mago hypnos, mago medico, mago necromago){
+    int pj;
+        cout<<"Elige un personaje: ";
+        cout<<"1: Tristan el grande"<<endl;
+        cout<<"2: Duende"<<endl;
+        cout<<"3: Orcus el ogro"<<endl;
+        cout<<"4: Hypnos el hipnotista"<<endl;
+        cout<<"5: Vita la curandera"<<endl;
+        cout<<"6: Mors el necromago"<<endl;
+        cin>>pj;
+        switch (pj){
+            case 1:
+                cout<<"Has elegido a Tristan el grande"<<endl;
+                return caballero;
+                break;
+            case 2:
+                cout<<"Has elegido al Duende"<<endl;
+                return duende;
+                break;
+            case 3:
+                cout<<"Has elegido a Orcus el ogro"<<endl;
+                return ogro;
+                break;
+            case 4:
+                cout<<"Has elegido a Hypnos el hipnotista"<<endl;
+                return hypnos;
+                break;
+            case 5:
+                cout<<"Has elegido a Vita la curandera"<<endl;
+                return medico;
+                break;
+            case 6:
+                cout<<"Has elegido a Mors el necromago"<<endl;
+                return necromago;
+                break;
+            default:
+                cout<<"Opcion invalida, elige de nuevo"<<endl;
+        }
+    
+};
+
+void jcj1(personaje& pj1, personaje& pj2){
+    int turno=0;
+    while(true);
+}
