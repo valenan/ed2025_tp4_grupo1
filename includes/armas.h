@@ -17,6 +17,9 @@ public:
 
     arma(string nombre, int dano, string descripcion,bool contundente,bool veneno);
     void mostrar_arma();
+    int get_dano();
+    bool get_veneno();
+    bool get_contundente();
 
 };
 class baston: public arma{
@@ -26,6 +29,8 @@ private:
 public:
 baston(int especial, int cooldown,string nombre, int dano, string descripcion,bool contundente,bool veneno);
 void mostrar_arma();
+int get_especial();
+int get_cooldown();
 };
 
 #endif

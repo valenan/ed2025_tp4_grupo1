@@ -17,7 +17,7 @@ class personaje{
     public:
     personaje(int vida,string nombrepj,bool activo,int veneno,bool vivo,string descripcion);
     void mostrar_pj();
-    void atacar(arma dano,bool veneno,bool contundente);
+    int atacar(arma dano,bool veneno,bool contundente);
     void recibirdano(int recibido);
     void recibirveneno(int recibido);
 };

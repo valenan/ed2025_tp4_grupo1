@@ -17,6 +17,16 @@ using namespace std;
     if (contundente)
         cout<<"Contundente: Deja inutilizable al personaje del enemigo 1 turno"<<endl;
     };
+    //getters
+    int arma::get_dano(){
+        return dano;
+    };
+    bool arma::get_veneno(){
+        return veneno;
+    };
+    bool arma::get_contundente(){
+        return contundente;
+    };
 
 baston::baston(int especial, int cooldown,string nombre, int dano, string descripcion,bool contundente,bool veneno):arma(nombre,dano,descripcion,contundente,veneno){
     this->especial=especial;
@@ -36,4 +46,10 @@ void baston::mostrar_arma(){
     cout<<"Necromacia: Revive un aliado en el proximo turno."<<endl<<cooldown<<endl;
     break;
 };
+};
+int baston::get_especial(){
+    return especial;
+};
+int baston::get_cooldown(){
+    return cooldown;
 };
