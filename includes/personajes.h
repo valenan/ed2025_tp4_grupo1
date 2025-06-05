@@ -2,11 +2,11 @@
 #define PERSONAJES_H
 
 #include <iostream>
-#include <armas.h>
+#include "armas.h"
 using namespace std;
 
-class personaje{
-    private:
+class personaje {
+private:
     int vida;
     string nombrepj;
     bool activo;
@@ -14,25 +14,22 @@ class personaje{
     bool vivo;
     string descripcion;
 
-    public:
-    //Constructor
-    personaje(int vida,string nombrepj,bool activo,int veneno,bool vivo,string descripcion);
-    //Metodos
+public:
+    personaje(int vida, string nombrepj, bool activo, int veneno, bool vivo, string descripcion);
     void mostrar_pj();
-    int atacar(arma dano);
+    int atacar(arma& dano);  // Corregido: es método, no función libre
     void recibirdano(int recibido);
     void recibirveneno(bool recibido);
     void recibircuracion(int recibido);
-    virtual arma& get_arma() = 0; // virtual para permitir que las subclases implementen su propia arma
+    virtual arma& get_arma() = 0;
 
-    //getters
     int get_vida();
     string get_nombrepj();
     bool get_activo();
     int get_veneno();
     bool get_vivo();
     string get_descripcion();
-    //setters
+
     void set_vida(int vida);
     void set_nombrepj(const string& nombrepj);
     void set_activo(bool activo);
@@ -40,38 +37,34 @@ class personaje{
     void set_vivo(bool vivo);
     void set_descripcion(const string& descripcion);
 };
-class guerrero: public personaje{
-    /*
-    Guerrero: No puede usar baston de mago, tiene un escudo,
-    tiene 100 de vida.
-    */
-    private:
+
+class guerrero : public personaje {
+private:
     arma& ARMA;
-    int escudo;//30 hp, si se rompe el guerrero no recibe daño
-    public:
-    guerrero(int vida,string nombrepj, bool activo, int veneno, bool vivo,string descripcion,int escudo,arma& ARMA);
-    void recibirescudo(int recibido,int escudo);
+    int escudo;
+public:
+    guerrero(int vida, string nombrepj, bool activo, int veneno, bool vivo, string descripcion, int escudo, arma& ARMA);
+    void recibirescudo(int recibido, int escudo);
     arma& get_arma() override;
 };
-class mago: public personaje {
+
+class mago : public personaje {
 private:
-baston BASTON;
-int proteccion; //funciona como 1 escudo, con menos vida y se puede usar solo 1 turno
-bool prot_si;
+    baston BASTON;
+    int proteccion;
+    bool prot_si;
 public:
-mago(int vida,string nombrepj,bool activo,int veneno,bool vivo,string descripcion,baston BASTON,int proteccion,bool prot_si);
-int especial(baston& BASTON,personaje& pj1,personaje& pj2); 
-arma& get_arma() override;
-
+    mago(int vida, string nombrepj, bool activo, int veneno, bool vivo, string descripcion, baston BASTON, int proteccion, bool prot_si);
+    int especial(baston& BASTON, personaje& pj1, personaje& pj2);
+    arma& get_arma() override;
 };
-class otros: public personaje{
-    //Personajes "normales".
-    private:
-    arma& ARMA;
-    public:
-otros(int vida,string nombrepj,bool activo,int veneno,bool vivo,string descripcion,arma& ARMA);
 
-arma& get_arma() override;
+class otros : public personaje {
+private:
+    arma& ARMA;
+public:
+    otros(int vida, string nombrepj, bool activo, int veneno, bool vivo, string descripcion, arma& ARMA);
+    arma& get_arma() override;
 };
 
 #endif
